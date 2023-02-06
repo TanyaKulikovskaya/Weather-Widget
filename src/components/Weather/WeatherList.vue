@@ -9,8 +9,6 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-
 import WeatherItem from "./WeatherItem.vue";
 
 export default {
@@ -18,29 +16,11 @@ export default {
   components: {
     WeatherItem,
   },
-  computed: {
-    ...mapGetters(["weatherList"]),
-  },
-  methods: {
-    ...mapActions(["fetchWeather"]),
-  },
-  mounted() {
-    this.fetchWeather({
-      city: "Bangkok",
-      country: "Thailand",
-    });
+  props: {
+    weatherList: {
+      type: Array,
+      default: () => [],
+    },
   },
 };
 </script>
-
-<style lang="scss">
-.weather-list {
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  padding: 12px 8px;
-}
-</style>

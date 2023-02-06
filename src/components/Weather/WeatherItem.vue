@@ -61,6 +61,10 @@ export default {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 12px;
+    img {
+      height: 100px;
+      width: 100px;
+    }
     span {
       font-size: 26px;
     }
