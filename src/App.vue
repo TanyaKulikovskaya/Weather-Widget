@@ -1,23 +1,20 @@
 <template>
-  <div id="app">
-    <h1>Check Weather</h1>
+  <div class="wrapper">
+    <weather-list />
   </div>
 </template>
 
 <script>
+import WeatherList from "./components/Weather/WeatherList.vue";
+
 export default {
   name: "App",
-  components: {},
+  components: {
+    WeatherList,
+  },
 };
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import "./assets/styles/main.scss";
 </style>
