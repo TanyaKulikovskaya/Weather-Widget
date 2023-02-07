@@ -1,12 +1,18 @@
 <template>
   <div class="settings">
     <p class="settings__title">Settings</p>
+    <add-location />
   </div>
 </template>
 
 <script>
+import AddLocation from "./AddLocation.vue";
+
 export default {
   name: "WidgetSettings",
+  components: {
+    AddLocation,
+  },
 };
 </script>
 

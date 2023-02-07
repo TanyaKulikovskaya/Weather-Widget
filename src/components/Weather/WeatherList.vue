@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import WeatherItem from "./WeatherItem.vue";
 
 export default {
@@ -16,11 +17,14 @@ export default {
   components: {
     WeatherItem,
   },
-  props: {
-    weatherList: {
-      type: Array,
-      default: () => [],
-    },
+  methods: {
+    ...mapActions(["check"]),
+  },
+  computed: {
+    ...mapGetters(["weatherList"]),
+  },
+  mounted() {
+    this.check();
   },
 };
 </script>

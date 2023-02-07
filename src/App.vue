@@ -6,14 +6,14 @@
     </div>
 
     <div v-show="!isSettingsVisible && weatherList.length > 0" class="content">
-      <weather-list :weatherList="weatherList" />
+      <weather-list />
       <settings-icon @openSettings="toggleVisibility()" />
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 
 import WeatherList from "./components/Weather/WeatherList.vue";
 import SettingsIcon from "./components/Weather/SettingsIcon.vue";
@@ -34,19 +34,12 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["fetchWeather"]),
     toggleVisibility() {
       this.isSettingsVisible = !this.isSettingsVisible;
     },
   },
   computed: {
     ...mapGetters(["weatherList"]),
-  },
-  mounted() {
-    this.fetchWeather({
-      city: "Minsk",
-      country: "Belarus",
-    });
   },
 };
 </script>
