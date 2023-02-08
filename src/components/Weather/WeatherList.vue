@@ -1,5 +1,5 @@
 <template>
-  <ul class="weather-list">
+  <ul v-show="weatherList.length > 0" class="weather-list">
     <weather-item
       v-for="weather in weatherList"
       :key="weather.id"

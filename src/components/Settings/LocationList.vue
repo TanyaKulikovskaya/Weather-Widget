@@ -1,32 +1,31 @@
 <template>
   <ul>
-    <li
-      v-for="(item, index) in locations"
+    <location-item
+      v-for="(location, index) in locations"
       :key="index"
-      class="location-list__item"
-    >
-      {{ item.city }}, {{ item.country }}
-    </li>
+      :location="location"
+      @removeItem="removeItem(index)"
+    />
   </ul>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
+import LocationItem from "./LocationItem.vue";
 
 export default {
   name: "LocationList",
+  components: {
+    LocationItem,
+  },
   computed: {
     ...mapGetters(["locations"]),
   },
+  methods: {
+    ...mapActions(["removeLocation"]),
+    removeItem(index) {
+      this.removeLocation(index);
+    },
+  },
 };
 </script>
-
-<style lang="scss">
-.location-list__item {
-  padding: 6px 8px;
-  background-color: #dee2e6;
-  &:not(:last-child) {
-    margin-bottom: 16px;
-  }
-}
-</style>

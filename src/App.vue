@@ -5,8 +5,9 @@
       <close-icon @closeSettings="toggleVisibility()" />
     </div>
 
-    <div v-show="!isSettingsVisible && weatherList.length > 0" class="content">
+    <div v-show="!isSettingsVisible" class="content">
       <weather-list />
+      <h1 v-if="!weatherList.length > 0" class="content__title">Weather</h1>
       <settings-icon @openSettings="toggleVisibility()" />
     </div>
   </div>
@@ -50,5 +51,9 @@ export default {
 .content {
   display: flex;
   align-items: flex-start;
+  &__title {
+    font-size: 18px;
+    line-height: 40px;
+  }
 }
 </style>

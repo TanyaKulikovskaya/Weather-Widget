@@ -1,5 +1,5 @@
 <template>
-  <button type="button">
+  <button type="button" @click.prevent="closeSettings()">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="icon icon-tabler icon-tabler-x"
@@ -13,7 +13,6 @@
       stroke-linejoin="round"
       aria-labelledby="close-settings-label"
       focusable="false"
-      @click="closeSettings()"
     >
       <title id="close-settings-label">Close settings</title>
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -38,5 +37,7 @@ export default {
 button {
   background-color: transparent;
   margin: 8px;
+  width: 24px;
+  height: 24px;
 }
 </style>
