@@ -13,6 +13,7 @@
     "eslint-plugin-import": "^2.27.5",
     "vue": "^2.6.14",
     "vue-custom-element": "^3.3.0",
+    "vuedraggable": "^2.24.3",
     "vuex": "^3.6.2",
     "webpack": "^5.75.0"
   },

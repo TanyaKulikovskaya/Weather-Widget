@@ -25,6 +25,12 @@ export default new Vuex.Store({
     DELETE_WEATHER(state, index) {
       state.weatherList.splice(index, 1);
     },
+    SET_WEATHER_LIST(state) {
+      const cities = state.locations.map((item) => item.city);
+      state.weatherList = [...state.weatherList].sort(function (a, b) {
+        return cities.indexOf(a.name) - cities.indexOf(b.name);
+      });
+    },
     ADD_LOCATION(state, item) {
       state.locations.push(item);
       const locations = JSON.parse(localStorage.getItem("locations") || "[]");
@@ -35,6 +41,10 @@ export default new Vuex.Store({
       state.locations.splice(index, 1);
       const locations = JSON.parse(localStorage.getItem("locations") || "[]");
       locations.splice(index, 1);
+      localStorage.setItem("locations", JSON.stringify(locations));
+    },
+    SET_LOCATIONS(state, locations) {
+      state.locations = locations;
       localStorage.setItem("locations", JSON.stringify(locations));
     },
   },
@@ -76,6 +86,13 @@ export default new Vuex.Store({
     },
     removeWeather({ commit }, index) {
       commit("DELETE_WEATHER", index);
+    },
+    updateLocations({ dispatch, commit }, locations) {
+      commit("SET_LOCATIONS", locations);
+      dispatch("updateWeatherList");
+    },
+    updateWeatherList({ commit }) {
+      commit("SET_WEATHER_LIST");
     },
   },
   modules: {},
