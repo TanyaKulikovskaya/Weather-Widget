@@ -49,5 +49,6 @@ export default {
 
 .content {
   display: flex;
+  align-items: flex-start;
 }
 </style>

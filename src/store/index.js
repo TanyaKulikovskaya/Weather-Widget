@@ -30,6 +30,24 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    async checkLocations({ dispatch, commit, getters }) {
+      if (getters.locations.length === 0) {
+        let location = {
+          city: "Minsk",
+          country: "Belarus",
+        };
+        commit("ADD_LOCATION", location);
+      }
+      dispatch("getWeather");
+    },
+    async getWeather({ dispatch, getters }) {
+      for (let location of getters.locations) {
+        await dispatch("fetchWeather", {
+          city: location.city,
+          country: location.country,
+        });
+      }
+    },
     async fetchWeather({ commit }, { city, country }) {
       try {
         const res = await axios.get(
@@ -38,24 +56,6 @@ export default new Vuex.Store({
         commit("ADD_WEATHER", res.data);
       } catch (error) {
         console.log(error);
-      }
-    },
-    async check({ dispatch, commit, getters }) {
-      if (getters.locations.length === 0) {
-        let location = {
-          city: "Minsk",
-          country: "Belarus",
-        };
-        commit("ADD_LOCATION", location);
-      }
-      dispatch("loadData");
-    },
-    async loadData({ dispatch, getters }) {
-      for (let location of getters.locations) {
-        await dispatch("fetchWeather", {
-          city: location.city,
-          country: location.country,
-        });
       }
     },
     setLocation({ commit }, item) {

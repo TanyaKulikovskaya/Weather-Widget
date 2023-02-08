@@ -14,7 +14,11 @@
         class="add-location-form__input"
       />
 
-      <button type="submit" :disabled="!location.country || !location.city">
+      <button
+        type="submit"
+        :disabled="!location.country || !location.city"
+        class="add-location-form__btn"
+      >
         Add Location
       </button>
     </form>
@@ -52,11 +56,32 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../assets/styles/variables.scss";
+
 .add-location-form {
   display: flex;
   flex-direction: column;
   &__input {
     margin-bottom: 12px;
+  }
+  &__btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    line-height: 16px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    background-color: $dark-gray;
+    color: $white;
+    transition-duration: 0.2s;
+    &:hover {
+      background-color: $accent;
+      color: $main-font-color;
+      transition-duration: 0.3s;
+    }
+    &:disabled {
+      background-color: $gray;
+      color: $main-font-color;
+    }
   }
 }
 </style>

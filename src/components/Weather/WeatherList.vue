@@ -18,13 +18,13 @@ export default {
     WeatherItem,
   },
   methods: {
-    ...mapActions(["check"]),
+    ...mapActions(["checkLocations"]),
   },
   computed: {
     ...mapGetters(["weatherList"]),
   },
   mounted() {
-    this.check();
+    this.checkLocations();
   },
 };
 </script>
