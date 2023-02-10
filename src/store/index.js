@@ -52,8 +52,8 @@ export default new Vuex.Store({
     async checkLocations({ dispatch, commit, getters }) {
       if (getters.locations.length === 0) {
         let location = {
-          city: "Minsk",
-          country: "Belarus",
+          city: "Bangkok",
+          country: "Thailand",
         };
         commit("ADD_LOCATION", location);
       }
