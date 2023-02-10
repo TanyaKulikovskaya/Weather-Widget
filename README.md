@@ -19,9 +19,8 @@ This project implements the following features:
 
 ### Project setup
 Create ```.env``` file in the root directory that contains key/value pair
-defining the project's required environment variable.
-
-key - VUE_APP_WEATHER_API_KEY
+defining the project's required environment variable:
+key - ```VUE_APP_WEATHER_API_KEY```,
 value - your [Open Weather API](https://openweathermap.org/api) key.
 ```
 npm install
